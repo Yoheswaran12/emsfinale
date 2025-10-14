@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Employee Management System (Django)
 
 This is a minimal, production-ready starter implementing:
@@ -39,3 +40,6 @@ This is a minimal, production-ready starter implementing:
 ## Notes
 - Media uploads (profile photos) are saved under `media/` (served in development).
 - Time zone is set to Asia/Kolkata.
+=======
+# emsfinale
+>>>>>>> d08032ca090e033ed4ab742efbe149692fcedadc
