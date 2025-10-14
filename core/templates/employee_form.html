@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <div class="card-header">{{ title }}</div>
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+      {{ form.as_p }}
+
+      {% if user_obj %}
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">Department</label>
+            <select class="form-select" name="department">
+              <option value="">---------</option>
+              {% for d in departments %}
+                <option value="{{ d.id }}" {% if profile.department and d.id == profile.department.id %}selected{% endif %}>{{ d.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Position</label>
+            <select class="form-select" name="position">
+              <option value="">---------</option>
+              {% for p in positions %}
+                <option value="{{ p.id }}" {% if profile.position and p.id == profile.position.id %}selected{% endif %}>{{ p.name }} ({{ p.department.name }})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" value="{{ profile.phone }}"/>
+          </div>
+          <div class="col-md-12 mt-3">
+            <label class="form-label">Photo</label>
+            <input type="file" class="form-control" name="photo"/>
+          </div>
+        </div>
+      {% endif %}
+
+      <a href="{% url 'employee_list' %}" class="btn btn-secondary">Back</a>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-md-3">
+    <div class="card text-bg-primary">
+      <div class="card-body">
+        <h5 class="card-title">Employees</h5>
+        <p class="display-6">{{ total_employees }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-success">
+      <div class="card-body">
+        <h5 class="card-title">Departments</h5>
+        <p class="display-6">{{ total_departments }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-warning">
+      <div class="card-body">
+        <h5 class="card-title">Pending Leaves</h5>
+        <p class="display-6">{{ pending_leaves }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">My Attendance Records</h5>
+        <p class="display-6">{{ my_attendance_count }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if my_dept %}
+<div class="row mt-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Manager Snapshot</div>
+      <div class="card-body">
+        <p class="mb-0">Department: <strong>{{ my_dept.name }}</strong></p>
+        <p class="mb-0">Employees in Department: <strong>{{ dept_employees }}</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

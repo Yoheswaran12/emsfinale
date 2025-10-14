@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>Positions</h3>
+  <a class="btn btn-primary" href="{% url 'position_create' %}">Add Position</a>
+</div>
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>Name</th><th>Department</th><th style="width:200px">Actions</th></tr></thead>
+      <tbody>
+        {% for p in items %}
+          <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.department.name }}</td>
+            <td>
+              <a href="{% url 'position_update' p.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+              <a href="{% url 'position_delete' p.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="3" class="text-center p-3">No positions yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

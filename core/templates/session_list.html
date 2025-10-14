@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>User Sessions</h3>
+</div>
+
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+          <th>Login Time</th>
+          <th>Logout Time</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in sessions %}
+          <tr>
+            <td>{{ s.user.get_full_name|default:s.user.username }}</td>
+            <td>{{ s.role }}</td>
+            <td>{{ s.login_time }}</td>
+            <td>
+              {% if s.logout_time %}
+                {{ s.logout_time }}
+              {% else %}
+                <span class="text-success">Active</span>
+              {% endif %}
+            </td>
+            <td>{{ s.duration_human }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4" class="text-center p-3">No sessions recorded.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
