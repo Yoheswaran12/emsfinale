@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-change-this-in-production'
 DEBUG = True
-ALLOWED_HOSTS = ['emsfinale.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['emsfinale.onrender.com', 'localhost', '127.0.0.1','yohes.pythonanywhere.com']
 
 
 INSTALLED_APPS = [
